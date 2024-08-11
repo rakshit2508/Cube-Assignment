@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+
 
 // Function to fetch and store images if they are not already in local storage
 export const fetchAndStoreImages = async () => {
