@@ -11,7 +11,7 @@ export const fetchAndStoreImages = async () => {
   }
 
   try {
-    const response = await axios.get(`https://api.unsplash.com/photos?per_page=100&client_id=${UNSPLASH_ACCESS_KEY}`);
+    const response = await axios.get(`https://api.unsplash.com/photos?per_page=100&client_id=Aqlxo8XT9Av0sje7GqYiXAWUkZGOrESWazRZlktIivo`);
     const images = response.data.map((img: any) => ({
       url: img.urls.small,
       id: img.id,
