@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  background-color: #e8eaed;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+}
+
+.customer-list {
+  width: 30%;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  overflow-y: auto;
+  height: calc(100vh - 50px); /* Adjust height to exclude header */
+}
+
+.customer-card {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.customer-card.selected {
+  background-color: #f0f0f0;
+}
+
+.customer-details {
+  width: 70%;
+  padding: 10px;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the text elements horizontally */
+  margin-bottom: 20px; /* Space between text content and image gallery */
+}
+
+.text-content h2,
+.text-content p {
+  margin: 4px 0; /* Reduced margin for less gap between text elements */
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.image-gallery img {
+  width: 100%; /* Ensure the image fills the container width */
+  height: 150px; /* Set a fixed height for uniformity */
+  object-fit: cover; /* Ensure the image covers the area while maintaining its aspect ratio */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+}
