@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-
+const UNSPLASH_ACCESS_KEY = import.meta.env.UNSPLASH_ACCESS_KEY;
 
 // Function to fetch and store images if they are not already in local storage
 export const fetchAndStoreImages = async () => {
@@ -11,10 +11,10 @@ export const fetchAndStoreImages = async () => {
   }
 
   try {
-    const response = await axios.get(`https://api.unsplash.com/photos?per_page=100&client_id=Aqlxo8XT9Av0sje7GqYiXAWUkZGOrESWazRZlktIivo`);
-    const images = response.data.map((img: any) => ({
-      url: img.urls.small,
-      id: img.id,
+    const response = await axios.get(`https://api.unsplash.com/photos?per_page=100&client_id=${UNSPLASH_ACCESS_KEY}`);
+    const images = response.data?.map((img: any) => ({
+      url: img?.urls?.small,
+      id: img?.id,
     }));
     localStorage.setItem('allImages', JSON.stringify(images));
   } catch (err) {
@@ -25,26 +25,28 @@ export const fetchAndStoreImages = async () => {
 // Function to get random images from local storage
 export const getRandomImages = (count: number = 9) => {
   const allImages = JSON.parse(localStorage.getItem('allImages') || '[]');
-  return allImages.sort(() => 0.5 - Math.random()).slice(0, count).map((img: any) => img.url);
+  return allImages
+    ?.sort(() => 0.5 - Math.random())
+    .slice(0, count)
+    .map((img: any) => img?.url) || [];
 };
-
 
 // Function to fetch random customer data
 export const fetchCustomers = async () => {
   const response = await axios.get('https://randomuser.me/api/?results=1000');
-  return response.data.results.map((user: any) => ({
-    id: user.login.uuid,
+  return response.data?.results?.map((user: any) => ({
+    id: user?.login?.uuid,
     name: {
-      first: user.name.first,
-      last: user.name.last,
-      title: user.name.title,
+      first: user?.name?.first,
+      last: user?.name?.last,
+      title: user?.name?.title,
     },
     location: {
-      street: { name: user.location.street.name },
-      city: user.location.city,
-      state: user.location.state,
+      street: { name: user?.location?.street?.name },
+      city: user?.location?.city,
+      state: user?.location?.state,
     },
-    paragraph: `This is a sample paragraph for customer ${user.name.first} ${user.name.last}.`,
-  }));
+    paragraph: `This is a sample paragraph for customer ${user?.name?.first} ${user?.name?.last}.
+    ${user?.name?.first} is an individual with a diverse background in various fields. `,
+  })) || [];
 };
-

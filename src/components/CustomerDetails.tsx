@@ -68,9 +68,9 @@ const CustomerDetails: React.FC<{ customer: Customer | null }> = ({ customer }) 
   return (
     <div className="customer-details">
       <div className="text-content">
-        <h2>{customer.name.first} {customer.name.last}</h2>
-        <p>{customer.location.street.name}, {customer.location.city}, {customer.location.state}</p>
-        <p>{customer.paragraph}</p>
+        <h2>{customer?.name?.first} {customer?.name?.last}</h2>
+        <p>{customer?.location?.street?.name}, {customer?.location?.city}, {customer?.location?.state}</p>
+        <p>{customer?.paragraph}</p>
       </div>
       <ImageGallery images={images} />
     </div>

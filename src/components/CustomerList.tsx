@@ -7,7 +7,7 @@ interface Customer {
     last: string;
     title: string;
   };
-  paragraph : string;
+  paragraph: string;
 }
 
 interface CustomerListProps {
@@ -25,8 +25,8 @@ const CustomerList: React.FC<CustomerListProps> = ({ customers, onSelect, select
           className={`customer-card ${selectedCustomerId === customer.id ? 'selected' : ''}`}
           onClick={() => onSelect(customer)}
         >
-          <h3>{customer.name.first} {customer.name.last}</h3>
-          <p>{customer.paragraph}</p>
+          <h3>{customer?.name?.first} {customer?.name?.last}</h3>
+          <p>{customer?.paragraph}</p>
         </div>
       ))}
     </div>
